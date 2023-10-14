@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int maxProfit(const int* A, int n1) {
+    int max = 0;  // Initialize max profit to 0
+    int k = 0;    // Initialize k
+
+    for (int i = 0; i < n1; i++) {
+        for (int j = i + 1; j < n1; j++) {
+            int diff = A[j] - A[i];  // Calculate the profit
+
+            if (diff > max) {
+                max = diff;  // Update the maximum profit if a higher profit is found
+            }
+        }
+    }
+
+    return max;
+}
+
+int main() {
+    int n, A[100000];
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &A[i]);
+    }
+
+    int result = maxProfit(A, n);
+
+    printf("The maximum profit is: %d\n", result);
+
+    return 0;
+}
